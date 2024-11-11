@@ -1,4 +1,5 @@
 import express from "express";
+import userRoute from "./routes/user.route";
 import "dotenv/config";
 import "colors";
 
@@ -8,9 +9,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req: Request, res: any) => {
-  res.send("Server Running");
-});
+app.use('/user', userRoute);
 
 const server = app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}/`.bgYellow);
